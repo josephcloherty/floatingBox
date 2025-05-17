@@ -19,8 +19,8 @@ FoamFile
 (
     back
     {
-        type            wall;
-        inGroups        2(stationaryWalls wall);
+        type            empty;
+        inGroups        2(stationaryWalls empty);
         nFaces          1984;
         startFace       3840;
     }
@@ -40,8 +40,8 @@ FoamFile
     }
     front
     {
-        type            wall;
-        inGroups        2(stationaryWalls wall);
+        type            empty;
+        inGroups        2(stationaryWalls empty);
         nFaces          1984;
         startFace       5964;
     }

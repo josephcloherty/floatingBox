@@ -20,11 +20,16 @@ internalField   uniform 0;
 
 boundaryField
 {
-    "(front|back|sides|bottom)"
+    "(sides|bottom)"
     {
         type            nutkWallFunction;
         value           uniform 0;
     }
+
+	"(front|back)"
+	{
+		type			empty;
+	}
 
     atmosphere
     {

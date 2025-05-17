@@ -71,6 +71,23 @@ rigidBodyMotionCoeffs
             outerDistance   0.35;
         }
     }
+	constraints
+	{
+		stayInPlane
+		{
+			sixDoFRigidBodyMotionConstraint plane;
+			normal (0 0 1);          // plane normal → z
+		}
+	}
+	joint
+	{
+		type composite;
+		joints
+		(
+			{ type Px; }   // surge  (x)
+			{ type Py; }   // heave (y)
+		);
+	}
 }
 
 

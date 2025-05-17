@@ -20,11 +20,16 @@ internalField   uniform 0.1;
 
 boundaryField
 {
-    "(front|back|sides|bottom)"
+    "(sides|bottom)"
     {
         type            kqRWallFunction;
         value           uniform 0.1;
     }
+
+	"(front|back)"
+	{
+		type			empty;
+	}
 
     atmosphere
     {

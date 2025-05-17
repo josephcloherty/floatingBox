@@ -41,7 +41,7 @@ boundary
 (
     back
     {
-        type wall;
+        type empty;
 		inGroups (stationaryWalls);
         faces
         (
@@ -69,7 +69,7 @@ boundary
     }
     front
     {
-        type wall;
+        type empty;
 		inGroups (stationaryWalls);
         faces
         (
