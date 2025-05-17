@@ -1,0 +1,7 @@
+rm -rf 0
+
+rm -rf proc*
+
+rm -rf log.*
+
+foamListTimes -rm

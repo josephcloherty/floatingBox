@@ -1,0 +1,24 @@
+#!/bin/sh
+cd "${0%/*}" || exit                                # Run from this directory
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
+#------------------------------------------------------------------------------
+
+blockMesh
+
+extrudeMesh
+
+topoSet
+
+subsetMesh -overwrite c0 -patch floatingObject
+
+cp -r 0.orig 0
+
+setFields
+
+decomposePar
+
+mpirun -np 12 interFoam -parallel
+
+reconstructPar
+
+#------------------------------------------------------------------------------
