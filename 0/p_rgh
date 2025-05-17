@@ -9,20 +9,20 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volVectorField;
-    object      U;
+    class       volScalarField;
+    object      p_rgh;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0];
+dimensions      [1 -1 -2 0 0 0 0];
 
-internalField   uniform (0 0 0);
+internalField   uniform 0;
 
 boundaryField
 {
     "(sides|bottom)"
     {
-        type            noSlip;
+        type            fixedFluxPressure;
     }
 
 	"(front|back)"
@@ -32,15 +32,13 @@ boundaryField
 
     atmosphere
     {
-        type            inletOutlet;
-		inletValue		uniform (0 0 0);
-        value           uniform (0 0 0);
+        type            totalPressure;
+        p0              uniform 0;
     }
 
     floatingObject
     {
-        type            movingWallVelocity;
-        value           uniform (0 0 0);
+        type            fixedFluxPressure;
     }
 }
 

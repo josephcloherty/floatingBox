@@ -27,4 +27,14 @@ thickness     0.1;
 flipNormals false;
 mergeFaces false;
 
+model
+{
+    type            plane;
+    // …
+    patchInfo       // <── this dictates the type of the new faces
+    {
+        type        empty;      // 2-D front/back → empty
+    }
+}
+
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

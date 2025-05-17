@@ -9,12 +9,12 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volVectorField;
-    object      U;
+    class       pointVectorField;
+    object      pointDisplacement;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0];
+dimensions      [0 1 0 0 0 0 0];
 
 internalField   uniform (0 0 0);
 
@@ -22,7 +22,8 @@ boundaryField
 {
     "(sides|bottom)"
     {
-        type            noSlip;
+        type            fixedValue;
+        value           uniform (0 0 0);
     }
 
 	"(front|back)"
@@ -32,14 +33,13 @@ boundaryField
 
     atmosphere
     {
-        type            inletOutlet;
-		inletValue		uniform (0 0 0);
+        type            fixedValue;
         value           uniform (0 0 0);
     }
 
     floatingObject
     {
-        type            movingWallVelocity;
+        type            calculated;
         value           uniform (0 0 0);
     }
 }
