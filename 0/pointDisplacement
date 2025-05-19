@@ -9,46 +9,39 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "system";
-    object      fvSchemes;
+    class       pointVectorField;
+    object      pointDisplacement;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-ddtSchemes
-{
-    default         CrankNicolson 0.5;
-}
+dimensions      [0 1 0 0 0 0 0];
 
-gradSchemes
-{
-    default         Gauss linear;
-}
+internalField   uniform (0 0 0);
 
-divSchemes
+boundaryField
 {
-    div(rhoPhi,U)  Gauss upwind; //vanLeerV
-    div(phi,alpha)  Gauss upwind; //vanLeer
-    div(phirb,alpha) Gauss upwind; //linear
-    div(phi,k)      Gauss upwind;
-    div(phi,epsilon) Gauss upwind;
-    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
-}
+    "(sides|bottom)"
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
 
-laplacianSchemes
-{
-    default         Gauss linear corrected;
-}
+	"(front|back)"
+	{
+		type			empty;
+	}
 
-interpolationSchemes
-{
-    default         linear;
-}
+    atmosphere
+    {
+        type            fixedValue;
+        value           uniform (0 0 0);
+    }
 
-snGradSchemes
-{
-    default         corrected;
+    floatingObject
+    {
+        type            calculated;
+        value           uniform (0 0 0);
+    }
 }
-
 
 // ************************************************************************* //

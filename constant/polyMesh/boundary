@@ -21,42 +21,42 @@ FoamFile
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          15872;
-        startFace       31440;
+        nFaces          14112;
+        startFace       27948;
     }
     sides
     {
         type            wall;
         inGroups        2(stationaryWalls wall);
-        nFaces          160;
-        startFace       47312;
+        nFaces          240;
+        startFace       42060;
     }
     bottom
     {
         type            wall;
         inGroups        2(stationaryWalls wall);
-        nFaces          200;
-        startFace       47472;
+        nFaces          120;
+        startFace       42300;
     }
     front
     {
         type            empty;
         inGroups        1(empty);
-        nFaces          15872;
-        startFace       47672;
+        nFaces          14112;
+        startFace       42420;
     }
     atmosphere
     {
         type            patch;
-        nFaces          200;
-        startFace       63544;
+        nFaces          120;
+        startFace       56532;
     }
     floatingObject
     {
         type            wall;
         inGroups        1(wall);
-        nFaces          48;
-        startFace       63744;
+        nFaces          72;
+        startFace       56652;
     }
 )
 

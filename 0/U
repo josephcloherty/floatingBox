@@ -9,46 +9,38 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "system";
-    object      fvSchemes;
+    class       volVectorField;
+    object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-ddtSchemes
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
 {
-    default         CrankNicolson 0.5;
+    "(sides|bottom)"
+    {
+        type            noSlip;
+    }
+
+	"(front|back)"
+	{
+		type			empty;
+	}
+
+    atmosphere
+    {
+        type            inletOutlet;
+		inletValue		uniform (0 0 0);
+        value           uniform (0 0 0);
+    }
+
+    floatingObject
+    {
+        type            movingWallVelocity;
+        value           uniform (0 0 0);
+    }
 }
-
-gradSchemes
-{
-    default         Gauss linear;
-}
-
-divSchemes
-{
-    div(rhoPhi,U)  Gauss upwind; //vanLeerV
-    div(phi,alpha)  Gauss upwind; //vanLeer
-    div(phirb,alpha) Gauss upwind; //linear
-    div(phi,k)      Gauss upwind;
-    div(phi,epsilon) Gauss upwind;
-    div(((rho*nuEff)*dev2(T(grad(U))))) Gauss linear;
-}
-
-laplacianSchemes
-{
-    default         Gauss linear corrected;
-}
-
-interpolationSchemes
-{
-    default         linear;
-}
-
-snGradSchemes
-{
-    default         corrected;
-}
-
-
 // ************************************************************************* //

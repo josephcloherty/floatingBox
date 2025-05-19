@@ -29,7 +29,7 @@ rigidBodyMotionCoeffs
         type Newmark;
     }
 
-    accelerationRelaxation 0.7;
+    accelerationRelaxation 0.3;
 
     bodies
     {
@@ -39,17 +39,17 @@ rigidBodyMotionCoeffs
             parent          root;
 
             // Cuboid dimensions
-            Lx              0.25;
-            Ly              0.25;
+            Lx              0.2;
+            Ly              0.2;
             Lz              0.1;
 
             // Density of the cuboid
-            rho             500;
+            rho             900;
 
             // Cuboid mass
-            mass            #eval{ $rho*$Lx*$Ly*$Lz*3 };
+            mass            #eval{ $rho*$Lx*$Ly*$Lz };
             L               ($Lx $Ly $Lz);
-            centreOfMass    (0 0 0);
+            centreOfMass    (0 0 -0.05);
             transform       (1 0 0 0 1 0 0 0 1) (0.5 0.45 0);
 
 			joint
@@ -71,8 +71,8 @@ rigidBodyMotionCoeffs
 			}
 
             patches         (floatingObject);
-            innerDistance   0.05;
-            outerDistance   0.35;
+            innerDistance   0.01;
+            outerDistance   0.2;
         }
     }
 
