@@ -42,6 +42,4 @@ boundaryField
         type            zeroGradient;
     }
 }
-
-#include $WM_PROJECT_DIR/etc/caseDicts/setConstraintTypes
 // ************************************************************************* //

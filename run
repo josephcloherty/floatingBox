@@ -15,11 +15,10 @@ cp -r 0.orig 0
 
 setFields
 
-//decomposePar
+decomposePar
 
-//mpirun -np 12 interFoam -parallel
+mpirun -np 12 interFoam -parallel
 
-//reconstructPar
+reconstructPar
 
-interFoam
 #------------------------------------------------------------------------------

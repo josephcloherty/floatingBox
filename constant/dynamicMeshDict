@@ -49,45 +49,33 @@ rigidBodyMotionCoeffs
             // Cuboid mass
             mass            #eval{ $rho*$Lx*$Ly*$Lz*3 };
             L               ($Lx $Ly $Lz);
-            centreOfMass    (0 0 -0.05);
-            transform       (1 0 0 0 1 0 0 0 1) (0.5 0.45 0.1);
+            centreOfMass    (0 0 0);
+            transform       (1 0 0 0 1 0 0 0 1) (0.5 0.45 0);
 
-            joint
-            {
-                type            composite;
-                joints
-                (
-                    {
-                        type Py;
-                    }
-                    {
-                        type Ry;
-                    }
-                );
-            }
+			joint
+			{
+				type composite;
+				joints
+				(
+					{ type Px; }   // surge  (x)
+					{ type Py; }   // heave (y)
+				);
+			}
+			constraints
+			{
+				stayInPlane
+				{
+					sixDoFRigidBodyMotionConstraint plane;
+					normal (0 0 1);          // plane normal → z
+				}
+			}
 
             patches         (floatingObject);
             innerDistance   0.05;
             outerDistance   0.35;
         }
     }
-	constraints
-	{
-		stayInPlane
-		{
-			sixDoFRigidBodyMotionConstraint plane;
-			normal (0 0 1);          // plane normal → z
-		}
-	}
-	joint
-	{
-		type composite;
-		joints
-		(
-			{ type Px; }   // surge  (x)
-			{ type Py; }   // heave (y)
-		);
-	}
+
 }
 
 

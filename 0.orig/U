@@ -43,6 +43,4 @@ boundaryField
         value           uniform (0 0 0);
     }
 }
-
-#include $WM_PROJECT_DIR/etc/caseDicts/setConstraintTypes
 // ************************************************************************* //
